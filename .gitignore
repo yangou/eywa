@@ -1,0 +1,8 @@
+.DS_Store
+eywa
+dump.rdb
+*.log
+tests/tests
+*.db
+*.pid
+benchmark

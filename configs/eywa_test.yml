@@ -1,0 +1,65 @@
+service:
+  host: localhost
+  api_port: 9090
+  device_port: 9091
+  pid_file: {{ .eywa_home }}/tmp/pids/eywa_test.pid
+  assets: {{ .eywa_home }}/assets
+security:
+  dashboard:
+    username: root
+    password: waterISwide
+    token_expiry: 24h
+    aes:
+      key: abcdefg123456789
+      iv: abcdefg123456789
+  ssl:
+    cert_file:
+    key_file:
+  api_key: dRiftingcLouds
+connections:
+  http:
+    timeouts:
+      long_polling: 600s
+  websocket:
+    request_queue_size: 8
+    timeouts:
+      write: 2s
+      read: 300s
+      request: 2s
+      response: 8s
+    buffer_sizes:
+      read: 1024
+      write: 1024
+indices:
+  disable: false
+  host: localhost
+  port: 9200
+  number_of_shards: 8
+  number_of_replicas: 0
+  ttl_enabled: false
+  ttl: 336h
+database:
+  db_type: sqlite3
+  db_file: {{ .eywa_home }}/db/eywa_test.db
+logging:
+  eywa:
+    filename: {{ .eywa_home }}/logs/test/eywa.log
+    maxsize: 1024
+    maxage: 7
+    maxbackups: 5
+    level: debug
+    buffer_size: 0
+  indices:
+    filename: {{ .eywa_home }}/logs/test/indices.log
+    maxsize: 1024
+    maxage: 7
+    maxbackups: 5
+    level: debug
+    buffer_size: 0
+  database:
+    filename: {{ .eywa_home }}/logs/test/db.log
+    maxsize: 1024
+    maxage: 7
+    maxbackups: 5
+    level: debug
+    buffer_size: 0
